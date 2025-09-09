@@ -161,3 +161,103 @@ input[type="password"]:focus {
 .navbar{
     text-align: left;
 }
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #222;
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 98%;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #222;
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 98%;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    background: #444;
+}
+
+.navbar ul li a.active {
+    background: #2193b0;
+    color: #fff;
+}
+
+select {
+    width: 105%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background: #333;
+    color: #fff;
+    font-size: 14px;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+select:focus {
+    background: #444;
+    border: 1px solid #2193b0;
+}
+
+select option {
+    background: #222;
+    color: #fff;
+    padding: 10px;
+}
+
+select option[value=""] {
+    color: #aaa;
+}
