@@ -40,25 +40,36 @@ if ($result && $result->num_rows > 0) {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h2>USER LOGIN</h2>
     <?php if (!empty($errorMsg)) : ?>
         <p style="color: red;"><?php echo $errorMsg; ?></p>
     <?php endif; ?>
     <form id="info" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-        <p>Please fill in the form below. All the fields are mandatory.</p>
-        <label for="name">Username</label>
-        <input type="text" name="name" id="name" value="<?php echo htmlspecialchars($name); ?>">
-        <span style="color: red;"><?php echo $nameMsg; ?></span>
-        <br>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-        <span style="color: red;"><?php echo $passMsg; ?></span>
-        <br>
-        <label for="usertype">User Type></label>
-        <input type="radio" name="usertype" value="Student">
-        <input type="radio" name="usertype" value="Staff">
-        <br><br>
-        <input type="submit" value="Submit" name="submit">
+        <h2>USER LOGIN</h2>
+        <p class="form-desc">Please fill in the form below. All the fields are mandatory.</p>
+        
+        <div class="form-group">
+            <label for="name">Username</label>
+            <input type="text" name="name" id="name" value="<?php echo htmlspecialchars($name); ?>">
+            <span class="error"><?php echo $nameMsg; ?></span>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+            <span class="error"><?php echo $passMsg; ?></span>
+        </div>
+
+        <div class="form-group">
+            <label>User Type</label>
+            <div class="radio-group">
+                <label><input type="radio" name="usertype" value="Student"> Student</label>
+                <label><input type="radio" name="usertype" value="Staff"> Staff</label>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" name="submit" class="btn-login">Sign In</button>
+        </div>
     </form>
 </body>
 </html>
