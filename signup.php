@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errorMsg = "Username already exists. Please try another one!";
         } else {
             $sql = "INSERT INTO user (username, password, user_type) 
-                    VALUES ('$name', '$hash_password', 'Student')";
+                    VALUES ('$name', '$hash_password', 'student')";
             if ($dbConn->query($sql) === TRUE) {
                 header("Location: signin.php");
                 exit();
@@ -58,11 +58,11 @@ if ($result && $result->num_rows > 0) {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h2>USER SIGNUP</h2>
     <?php if (!empty($errorMsg)) : ?>
         <p style="color: red;"><?php echo $errorMsg; ?></p>
     <?php endif; ?>
     <form id="info" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+        <h2>USER SIGNUP</h2>
         <p>Please fill in the form below. All the fields are mandatory.</p>
         <label for="name">Username</label>
         <input type="text" name="name" id="name" value="<?php echo htmlspecialchars($name); ?>">

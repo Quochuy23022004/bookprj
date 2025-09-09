@@ -21,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
        $hash_password = hash('sha256', $password);
 $sql = "SELECT password FROM user WHERE username = '$name' LIMIT 1";
 $result = $dbConn->query($sql);
-
 if ($result && $result->num_rows > 0) {
     $row = $result->fetch_assoc();
 $sql2 = "SELECT user_type FROM user WHERE username = '$name' LIMIT 1";
@@ -48,6 +47,7 @@ else {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <?php include 'header.php'; ?>
     <?php if (!empty($errorMsg)) : ?>
         <p style="color: red;"><?php echo $errorMsg; ?></p>
     <?php endif; ?>
