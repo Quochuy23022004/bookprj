@@ -1,4 +1,13 @@
 <?php
+
+  session_start();
+
+  if (!isset($_SESSION['username'])) {
+    header("Location: signin.php"); 
+  } else if($_SESSION['usertype'] != 'student') {
+    header("Location: checkingbooking.php");
+  }
+
   $dbConn = new mysqli("localhost", "root", "", "WSUBook");
   if($dbConn->connect_error) {
     die("Failed to connect to database " . $dbConn->connect_error);
@@ -18,20 +27,19 @@
     $userNameErr = empty($username) ? "Student username haven't exist, please try again!" : "";
     $bookTitleErr = empty($booktitle) ? "Title haven't exist, please try again!" : "";
     $dateErr = empty($date) ? "Date can't empty, please try again!" : "";
-  }
+    $flagCheck = empty($userNameErr) && empty($bookTitleErr) && empty($dateErr);
+    if($flagCheck) {
+      $stmt = $dbConn->prepare("INSERT INTO booking (student_username, staff_username, service_type, date_time, status) VALUES (?, '', ?, ?, 'pending')");
+      $stmt->bind_param("sss", $username, $booktitle, $date);
 
-  $flagCheck = empty($userNameErr) && empty($bookTitleErr) && empty($dateErr);
-  if($flagCheck) {
-    $stmt = $dbConn->prepare("INSERT INTO booking (student_username, staff_username, service_type, date_time, status) VALUES (?, '', ?, ?, 'pending')");
-    $stmt->bind_param("sss", $username, $booktitle, $date);
-
-    if ($stmt->execute()) {
-      header("Location: showbooking.php");
-      exit();
-    } else {
-      echo "<p style='color:red;'>Error: " . $stmt->error . "</p>";
+      if ($stmt->execute()) {
+        header("Location: showbooking.php");
+        exit();
+      } else {
+        echo "<p style='color:red;'>Error: " . $stmt->error . "</p>";
+      }
+      $stmt->close();
     }
-    $stmt->close();
   }
 ?>
 <!DOCTYPE html>
