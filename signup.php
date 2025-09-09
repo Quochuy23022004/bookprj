@@ -62,7 +62,7 @@ if ($result && $result->num_rows > 0) {
         <p style="color: red;"><?php echo $errorMsg; ?></p>
     <?php endif; ?>
     <form id="info" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-        <h2>USER SIGNUP</h2>
+        <h2>USER SIGNUPs</h2>
         <p>Please fill in the form below. All the fields are mandatory.</p>
         <label for="name">Username</label>
         <input type="text" name="name" id="name" value="<?php echo htmlspecialchars($name); ?>">
