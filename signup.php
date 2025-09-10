@@ -1,53 +1,58 @@
 <?php
-$dbConn = new mysqli("localhost", "root", "", "WSUBook");
-if($dbConn->connect_error) {
-die("Failed to connect to database " . $dbConn->connect_error);
-}
-$name = "";
-$password = "";
-$nameMsg = "";
-$passMsg = "";
-$errorMsg = "";
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = mysqli_real_escape_string($dbConn, trim($_POST['name'] ?? ''));
-    $password = trim($_POST['password'] ?? ''); 
-    if (empty($name)) {
-        $nameMsg = "This field is mandatory. Please enter your username!";
+    $dbConn = new mysqli("localhost", "root", "", "WSUBook");
+    if($dbConn->connect_error) {
+        die("Failed to connect to database " . $dbConn->connect_error);
     }
-    if (empty($password)) {
-        $passMsg = "This field is mandatory. Please enter your password!";
-    } elseif (strlen($password) < 8) {
-        $passMsg = "Your password must be longer than 8 characters!";
-    }
-    if (empty($nameMsg) && empty($passMsg)) {
-        $hash_password = hash('sha256', $password);
 
-        $checkUser = $dbConn->query("SELECT * FROM user WHERE username='$name' LIMIT 1");
+    $name = "";
+    $password = "";
+    $nameMsg = "";
+    $passMsg = "";
+    $errorMsg = "";
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $name = mysqli_real_escape_string($dbConn, trim($_POST['name'] ?? ''));
+        $password = trim($_POST['password'] ?? ''); 
+        if (empty($name)) {
+            $nameMsg = "This field is mandatory. Please enter your username!";
+        }
 
-        if ($checkUser && $checkUser->num_rows > 0) {
-            $errorMsg = "Username already exists. Please try another one!";
-        } else {
-            $sql = "INSERT INTO user (username, password, user_type) 
-                    VALUES ('$name', '$hash_password', 'student')";
-            if ($dbConn->query($sql) === TRUE) {
-                header("Location: signin.php");
-                exit();
+        if (empty($password)) {
+            $passMsg = "This field is mandatory. Please enter your password!";
+        } elseif (strlen($password) < 8) {
+            $passMsg = "Your password must be longer than 8 characters!";
+        }
+
+        if (empty($nameMsg) && empty($passMsg)) {
+            $hash_password = hash('sha256', $password);
+
+            $checkUser = $dbConn->query("SELECT * FROM user WHERE username='$name' LIMIT 1");
+
+            if ($checkUser && $checkUser->num_rows > 0) {
+                $errorMsg = "Username already exists. Please try another one!";
             } else {
-                $errorMsg = "Error: " . $dbConn->error;
+                $sql = "INSERT INTO user (username, password, user_type) 
+                        VALUES ('$name', '$hash_password', 'student')";
+                
+                if ($dbConn->query($sql) === TRUE) {
+                    header("Location: signin.php");
+                    exit();
+                } else {
+                    $errorMsg = "Error: " . $dbConn->error;
+                }
+
+                $hash_password = hash('sha256', $password);
+                $sql = "SELECT password FROM user WHERE username = '$name' LIMIT 1";
+                $result = $dbConn->query($sql);
+
+                if ($result && $result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    echo "<p>Welcome to WSUBOOK, " . htmlspecialchars($name) . "!</p>";      
+                } else {
+                    echo "<p>Invalid username or password. Please try again!</p>";
+                }
             }
-       $hash_password = hash('sha256', $password);
-$sql = "SELECT password FROM user WHERE username = '$name' LIMIT 1";
-$result = $dbConn->query($sql);
-if ($result && $result->num_rows > 0) {
-    $row = $result->fetch_assoc();
- echo "<p>Welcome to WSUBOOK, " . htmlspecialchars($name) . "!</p>";      
-}
- else {
-            echo "<p>Invalid username or password. Please try again!</p>";
         }
     }
-}
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
