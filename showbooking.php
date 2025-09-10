@@ -3,8 +3,6 @@
 
     if (!isset($_SESSION['username'])) {
       header("Location: signin.php"); 
-    } else if($_SESSION['usertype'] != 'staff') {
-      header("Location: makebooking.php");
     }
 
 
@@ -12,13 +10,9 @@
     if($dbConn->connect_error) {
         die("Failed to connect to database " . $dbConn->connect_error);
     }
-    
-    $bookingID = isset($_GET['bookingID']) ? intval($_GET['bookingID']) : 0;
-    $sql = "SELECT * FROM booking WHERE bookingId = ?";
-    $stmt = $dbConn->prepare($sql);
-    $stmt->bind_param("i", $bookingID);
-    $stmt->execute();
-    $result = $stmt->get_result();
+
+    $sql = "SELECT * FROM booking";
+    $result = $dbConn->query($sql);
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $bookingID = intval($_POST['bookingID']);
@@ -37,23 +31,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Confirm Booking - WSUBook</title>
+  <title>Show Booking - WSUBook</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="styleconfirm.css">
 </head>
 <body>
     <?php include 'header.php'; ?>
     <div class="form-container" >  
-        <h2>Cofirm Bookings</h2>
+        <h2>Show Bookings</h2>
         <table class="table-scroll">
             <thead>
                 <tr>
                     <th>Booking ID</th>
-                    <th>Student Username</th>
                     <th>Service Type</th>
                     <th>Date</th>
                     <th>Status</th>
-                    <th>Action</th>
                 </tr>
             </thead>
 
@@ -61,23 +53,26 @@
             <?php 
                 if ($result && $result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                            echo "<td>" . htmlspecialchars($row['bookingID']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['student_username']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['service_type']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['date_time']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['status']) . "</td>";
-                            if ($row['status'] === 'pending') {
-                                echo "<td>
-                                        <form action='confirmbooking.php' method='post'>
-                                            <input type='hidden' name='bookingID' value='" . $row['bookingID'] . "'>
-                                            <button type='submit' class='btn-confirm'>Confirm</button>
-                                        </form>
-                                      </td>";
-                            } else {
-                                echo "<td><span style='color: green; font-weight: bold;'>Already Confirmed</span></td>";
+                        if($_SESSION['usertype'] === 'student') {
+                            echo "<tr>";
+                                echo "<td>" . htmlspecialchars($row['bookingID']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['service_type']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['date_time']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['status']) . "</td>";
+                            echo "</tr>";
+                        } else {
+                            if($row['status'] == 'pending') {
+                                echo 
+                                    "<tr>";
+                                        echo "<td><a href='confirmbooking.php?bookingID=" . urlencode($row['bookingID']) . "'>"
+                                        . htmlspecialchars($row['bookingID']) . "</a>
+                                    </td>";
+                                    echo "<td>" . htmlspecialchars($row['service_type']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($row['date_time']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($row['status']) . "</td>";
+                                echo "</tr>";
                             }
-                        echo "</tr>";
+                        }
                     }
                 } else {
                     echo "<tr><td colspan='6'>No pending bookings found</td></tr>";

@@ -16,6 +16,10 @@
             <li><a href="information.php" class="<?php echo $current_page == 'information.php' ? 'active' : ''; ?>"><?php echo $_SESSION['username'];?></a></li>
             <li><a href="showbooking.php" class="<?php echo $current_page == 'showbooking.php' ? 'active' : ''; ?>">Show Booking</a></li>
             <li><a href="logout.php" class="<?php echo $current_page == 'logout.php' ? 'active' : ''; ?>">Logout</a></li>
+        <?php elseif ($current_page === "showbooking.php"): ?>
+            <li><a href="information.php" class="<?php echo $current_page == 'information.php' ? 'active' : ''; ?>"><?php echo $_SESSION['username'];?></a></li>
+            <li><a href="makebooking.php" class="<?php echo $current_page == 'makebooking.php' ? 'active' : ''; ?>">Make Booking</a></li>
+            <li><a href="logout.php" class="<?php echo $current_page == 'logout.php' ? 'active' : ''; ?>">Logout</a></li>
         <?php endif; ?>
     </ul>
 </nav>
