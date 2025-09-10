@@ -19,8 +19,6 @@
     $stmt->execute();
     $result = $stmt->get_result();
 
-    $notice = "";
-
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $bookingID = intval($_POST['bookingID']);
         $updateSql = "UPDATE booking SET status = 'Confirmed', staff_username = ? WHERE bookingId = ?";
