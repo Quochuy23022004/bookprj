@@ -6,7 +6,6 @@ body {
     align-items: center;
     height: 100vh;
 }
-
 .login-container {
     background: white;
     padding: 30px;
@@ -14,23 +13,19 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     width: 350px;
 }
-
 .login-container h2 {
     text-align: left;
     margin-bottom: 20px;
     color: #333;
 }
-
 .form-group {
     margin-bottom: 15px;
 }
-
 label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
-
 input[type="text"],
 input[type="password"] {
     width: 100%;
@@ -38,13 +33,11 @@ input[type="password"] {
     border: 1px solid #ccc;
     border-radius: 6px;
 }
-
 .user-type {
     display: flex;
     gap: 15px;
     margin-top: 10px;
 }
-
 .btn {
     width: 100%;
     padding: 12px;
@@ -55,11 +48,9 @@ input[type="password"] {
     font-size: 16px;
     cursor: pointer;
 }
-
 .btn:hover {
     background-color: #176a7a;
 }
-
 form {
     width: 350px;
     margin: 50px auto;
@@ -70,29 +61,24 @@ form {
     font-family: Arial, sans-serif;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
-
 h2 {
     text-align: center;
     margin-bottom: 20px;
 }
-
 .form-desc {
     font-size: 14px;
     text-align: center;
     margin-bottom: 20px;
     color: #ccc;
 }
-
 .form-group {
     margin-bottom: 20px;
 }
-
 label {
     display: block;
     font-weight: bold;
     margin-bottom: 6px;
 }
-
 input[type="text"],
 input[type="password"] {
     width: 100%;
@@ -102,34 +88,28 @@ input[type="password"] {
     background: #333;
     color: #fff;
 }
-
 input[type="text"]:focus,
 input[type="password"]:focus {
     outline: none;
     background: #444;
 }
-
 .radio-group {
     display: flex;
     justify-content: space-around;
     margin-top: 8px;
 }
-
 .radio-group label {
     font-weight: normal;
 }
-
 .error {
     display: block;
     font-size: 13px;
     color: #ff4d4d;
     margin-top: 5px;
 }
-
 .form-actions {
     margin-top: 20px;
 }
-
 .btn-login {
     width: 100%;
     padding: 12px;
@@ -142,26 +122,21 @@ input[type="password"]:focus {
     cursor: pointer;
     transition: all 0.3s ease;
 }
-
 .btn-login:hover {
     background: linear-gradient(135deg, #5aa0f2, #468ad6);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
-
 .btn-login:active {
     transform: translateY(0);
     box-shadow: none;
 }
-
 .error-msg{
     color: #ff4d4d;
 }
-
 .navbar{
     text-align: left;
 }
-
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -174,13 +149,11 @@ input[type="password"]:focus {
     width: 98%;
     z-index: 1000;
 }
-
 .navbar .logo {
     font-size: 22px;
     font-weight: bold;
     color: #fff;
 }
-
 .navbar ul {
     list-style: none;
     display: flex;
@@ -188,7 +161,6 @@ input[type="password"]:focus {
     margin: 0;
     padding: 0;
 }
-
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -201,13 +173,11 @@ input[type="password"]:focus {
     width: 98%;
     z-index: 1000;
 }
-
 .navbar .logo {
     font-size: 22px;
     font-weight: bold;
     color: #fff;
 }
-
 .navbar ul {
     list-style: none;
     display: flex;
@@ -215,7 +185,6 @@ input[type="password"]:focus {
     margin: 0;
     padding: 0;
 }
-
 .navbar ul li a {
     color: #fff;
     text-decoration: none;
@@ -224,16 +193,13 @@ input[type="password"]:focus {
     border-radius: 6px;
     transition: background 0.3s ease;
 }
-
 .navbar ul li a:hover {
     background: #444;
 }
-
 .navbar ul li a.active {
     background: #2193b0;
     color: #fff;
 }
-
 select {
     width: 105%;
     padding: 10px;
@@ -246,18 +212,15 @@ select {
     outline: none;
     cursor: pointer;
 }
-
 select:focus {
     background: #444;
     border: 1px solid #2193b0;
 }
-
 select option {
     background: #222;
     color: #fff;
     padding: 10px;
 }
-
 select option[value=""] {
     color: #aaa;
 }
