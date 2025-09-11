@@ -6,11 +6,11 @@
   <title>WSUBOOK | Homepage</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-.container {
-  display: grid;
+.container {  
+  display:grid;
   grid-template-areas:
     "header header"
-    "actions introduction"
+    "action introduction"
     "footer footer";
   grid-template-columns: 1fr 3fr;
   gap: 5px;
@@ -25,8 +25,8 @@
   grid-area: header;
   text-align: center;
 }
-.container > div.actions {
-    grid-area: actions;
+.container > div.action {
+    grid-area: action;
 text-align:left;
 }
 .container > div.introduction {
@@ -36,7 +36,6 @@ text-align:right;
 .container > div.footer {
   grid-area: footer;
 }
-
 </style>
 </head>
 <body>
@@ -61,7 +60,7 @@ text-align:right;
         any requests for help from the next generation of Australian leaders.
       </p>
     </div>
-    <div class="actions">
+    <div class="action">
       <h2>Get Started</h2>
       <p>If you would like to make an appointment:</p>
       <ul>

@@ -7,6 +7,7 @@
 
     $name = "";
     $password = "";
+    $usertype = "";
     $nameMsg = "";
     $passMsg = "";
     $errorMsg = "";
@@ -15,7 +16,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $name = mysqli_real_escape_string($dbConn, trim($_POST['name'] ?? ''));
         $password = trim($_POST['password'] ?? '');
-
+        $usertype = trim($_POST['usertype'] ?? '');
         if (empty($name)) {
             $nameMsg = "This field is mandatory. Please enter your username!";
         }
@@ -31,7 +32,7 @@
             if ($result && $result->num_rows > 0 ) {
                 $row = $result->fetch_assoc();
 
-                if ($hash_password ===  $row['password']) {
+                if ($hash_password ===  $row['password'] && $usertype == $row['user_type']) {
                     $_SESSION['username'] = $row['username'];
                     $_SESSION['usertype'] = $row['user_type'];
 
@@ -42,7 +43,7 @@
                         header("Location: checkingbooking.php");
                     }     
                 } else {
-                    $errorMsg = "Invalid password. Please try again!";
+                    $errorMsg = "Invalid password or user type. Please try again!";
                 }
             } else {
                 $errorMsg = "Invalid username. Please try again!";
