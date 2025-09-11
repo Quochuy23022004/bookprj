@@ -64,22 +64,34 @@
 </head>
 <body>
     <?php include 'header.php'; ?>
-    <?php if (!empty($errorMsg)) : ?>
-        <p style="color: red;"><?php echo $errorMsg; ?></p>
-    <?php endif; ?>
-    <form id="info" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-        <h2>USER SIGNUP</h2>
-        <p>Please fill in the form below. All the fields are mandatory.</p>
-        <label for="name">Username</label>
-        <input type="text" name="name" id="name" value="<?php echo htmlspecialchars($name); ?>">
-        <span style="color: red;"><?php echo $nameMsg; ?></span>
-        <br>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-        <span style="color: red;"><?php echo $passMsg; ?></span>
-        <br><br>
-        <input type="submit" value="Submit" name="submit">
-    </form>
+    
+    <div class="form-container">
+        <?php if (!empty($errorMsg)): ?>
+            <div class="error-message">
+                <p style="text-align:center; color:#c33535"><?php echo htmlspecialchars($errorMsg); ?></p>
+            </div>
+        <?php endif; ?>
+        <form id="info" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+            <h2>USER SIGNUP</h2>
+            <p>Please fill in the form below. All the fields are mandatory.</p>
+            
+            <div class="form-group">
+                <label for="name">Username</label>
+                <input type="text" name="name" id="name" value="<?php echo htmlspecialchars($name); ?>">
+                <span style="color: red;"><?php echo $nameMsg; ?></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+                <span style="color: red;"><?php echo $passMsg; ?></span>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" name="submit" class="btn-login">Sign Up</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
 <?php
