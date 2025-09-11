@@ -5,29 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WSUBOOK | Homepage</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+.container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "actions introduction"
+    "footer footer";
+  grid-template-columns: 1fr 3fr;
+  gap: 5px;
+  background-color: #2196F3;
+  padding: 5px;
+}
+.container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+}
+.container > div.header {
+  grid-area: header;
+  text-align: center;
+}
+.container > div.actions {
+    grid-area: actions;
+text-align:left;
+}
+.container > div.introduction {
+    grid-area: introduction;
+text-align:right;
+}
+.container > div.footer {
+  grid-area: footer;
+}
+
+</style>
 </head>
 <body>
-  <header>
+ <div class="container">
+   <div class="header">
     <h1>WSUBOOK | HOME</h1>
     <p class="tagline">Supporting WSU students since 2016</p>
-  </header>
+</div>
   <main>
-    <section class="welcome">
+    <div class="welcome">
       <h2>Welcome</h2>
       <p>
         Thank you for visiting our WSUBOOK website. We are here to support all 
         <strong>WSU students</strong> in both physical and mental health well-being.
       </p>
-    </section>
-    <section class="introduction">
+    </div>
+    <div class="introduction">
       <h2>A Quick Introduction</h2>
       <p>
         Established in 2016, our website was created by dedicated staff and team members to 
         provide essential services for students who need support. We are happy to receive 
         any requests for help from the next generation of Australian leaders.
       </p>
-    </section>
-    <section class="actions">
+    </div>
+    <div class="actions">
       <h2>Get Started</h2>
       <p>If you would like to make an appointment:</p>
       <ul>
@@ -40,7 +74,8 @@
           <span>New here? Register today.</span>
         </li>
       </ul>
-    </section>
+    </div>
   </main>
+</div>
 </body>
 </html>
