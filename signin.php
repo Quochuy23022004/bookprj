@@ -40,7 +40,7 @@
                         header("Location: makebooking.php");
                     }
                     else {
-                        header("Location: checkingbooking.php");
+                        header("Location: confirmbooking.php");
                     }     
                 } else {
                     $errorMsg = "Invalid password or user type. Please try again!";
@@ -84,8 +84,8 @@
             <div class="form-group">
                 <label>User Type</label>
                 <div class="radio-group">
-                    <label><input type="radio" name="usertype" value="Student"> Student</label>
-                    <label><input type="radio" name="usertype" value="Staff"> Staff</label>
+                    <label><input type="radio" name="usertype" value="student"> Student</label>
+                    <label><input type="radio" name="usertype" value="staff"> Staff</label>
                 </div>
             </div>
             <div class="form-actions">

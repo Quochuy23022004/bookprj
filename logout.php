@@ -13,6 +13,6 @@
 
     session_destroy();
 
-    header("Location: signin.php");
+    header("Location: homepage.html");
     exit();
 ?>
