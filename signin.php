@@ -40,7 +40,7 @@
                         header("Location: makebooking.php");
                     }
                     else {
-                        header("Location: confirmbooking.php");
+                        header("Location: showbooking.php");
                     }     
                 } else {
                     $errorMsg = "Invalid password or user type. Please try again!";

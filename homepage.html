@@ -6,11 +6,11 @@
   <title>WSUBOOK | Homepage</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-.container {  
-  display:grid;
+.container {
+  display: grid;
   grid-template-areas:
     "header header"
-    "action introduction"
+    "menu content"
     "footer footer";
   grid-template-columns: 1fr 3fr;
   gap: 5px;
@@ -25,34 +25,34 @@
   grid-area: header;
   text-align: center;
 }
-.container > div.action {
-    grid-area: action;
-text-align:left;
+.container > div.menu {
+  grid-area: menu;
 }
-.container > div.introduction {
-    grid-area: introduction;
-text-align:right;
+.container > div.content {
+  grid-area: content;
 }
 .container > div.footer {
   grid-area: footer;
 }
+    
 </style>
 </head>
 <body>
  <div class="container">
    <div class="header">
+     <img src="c:\Users\ASUS\Downloads\booking.jpg">
     <h1>WSUBOOK | HOME</h1>
     <p class="tagline">Supporting WSU students since 2016</p>
 </div>
   <main>
-    <div class="welcome">
+    <div class="menu">
       <h2>Welcome</h2>
       <p>
         Thank you for visiting our WSUBOOK website. We are here to support all 
         <strong>WSU students</strong> in both physical and mental health well-being.
       </p>
     </div>
-    <div class="introduction">
+    <div class="menu">
       <h2>A Quick Introduction</h2>
       <p>
         Established in 2016, our website was created by dedicated staff and team members to 
@@ -60,17 +60,17 @@ text-align:right;
         any requests for help from the next generation of Australian leaders.
       </p>
     </div>
-    <div class="action">
+    <div class="content">
       <h2>Get Started</h2>
       <p>If you would like to make an appointment:</p>
       <ul>
         <li>
-          <a href="signin.php" class="button">Sign In</a> 
           <span>Already a member? Sign in here.</span>
+           <a href="signin.php" class="button">Sign In</a> 
         </li>
         <li>
-          <a href="signup.php" class="button">Sign Up</a> 
           <span>New here? Register today.</span>
+           <a href="signup.php" class="button">Sign Up</a>
         </li>
       </ul>
     </div>
