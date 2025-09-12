@@ -1,19 +1,14 @@
 <?php
     session_start();
-
     if (!isset($_SESSION['username'])) {
       header("Location: signin.php"); 
     }
-
-
     $dbConn = new mysqli("localhost", "root", "", "WSUBook");
     if($dbConn->connect_error) {
         die("Failed to connect to database " . $dbConn->connect_error);
     }
-
     $sql = "SELECT * FROM booking";
     $result = $dbConn->query($sql);
-
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $bookingID = intval($_POST['bookingID']);
         $updateSql = "UPDATE booking SET status = 'Confirmed', staff_username = ? WHERE bookingId = ?";
@@ -21,7 +16,6 @@
         $stmt->bind_param("si", $_SESSION['username'], $bookingID);
         $stmt->execute();
         $stmt->close();
-
         header("Location: showbooking.php");
         exit();
     }
@@ -48,7 +42,6 @@
                     <th>Status</th>
                 </tr>
             </thead>
-
             <tbody>
             <?php 
                 if ($result && $result->num_rows > 0) {
@@ -60,7 +53,8 @@
                                 echo "<td>" . htmlspecialchars($row['date_time']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['status']) . "</td>";
                             echo "</tr>";
-                        } else {
+                        }
+                         else {
                             if($row['status'] == 'pending') {
                                 echo 
                                     "<tr>";
@@ -74,7 +68,8 @@
                             }
                         }
                     }
-                } else {
+                } 
+                else {
                     echo "<tr><td colspan='6'>No pending bookings found</td></tr>";
                 }
                 ?>

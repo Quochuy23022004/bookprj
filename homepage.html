@@ -5,20 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WSUBOOK | Homepage</title>
   <link rel="stylesheet" href="styles.css">
-  <style>
+</head>
+<style>
 .container {
   display: grid;
   grid-template-areas:
     "header header"
     "menu content"
     "footer footer";
-  grid-template-columns: 1fr 3fr;
-  gap: 5px;
-  background-color: #2196F3;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background-color:lightskyblue;
   padding: 5px;
+ text-align: center;
 }
 .container > div {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: whitesmoke ;
   padding: 10px;
 }
 .container > div.header {
@@ -34,43 +36,41 @@
 .container > div.footer {
   grid-area: footer;
 }
-    
+.container > content, menu > h2{
+  text-align:left ;
+}
 </style>
-</head>
 <body>
  <div class="container">
    <div class="header">
-     <img src="c:\Users\ASUS\Downloads\booking.jpg">
     <h1>WSUBOOK | HOME</h1>
-    <p class="tagline">Supporting WSU students since 2016</p>
+    <p class="tagline" style="font-style: italic;">Supporting WSU students since 2016</p>
+     <img src="booking.jpg" width="200px">
 </div>
   <main>
-    <div class="menu">
-      <h2>Welcome</h2>
-      <p>
-        Thank you for visiting our WSUBOOK website. We are here to support all 
-        <strong>WSU students</strong> in both physical and mental health well-being.
-      </p>
-    </div>
-    <div class="menu">
-      <h2>A Quick Introduction</h2>
-      <p>
-        Established in 2016, our website was created by dedicated staff and team members to 
-        provide essential services for students who need support. We are happy to receive 
-        any requests for help from the next generation of Australian leaders.
-      </p>
+    <div class="content">
+      <h2 style="font-style:italic">Welcome</h2>
+      <p style="font-style:italic">Hello and welcome to WSUBOOK! Thank you for visiting our website!</p><p  style="font-style:italic">We are here to support all <strong>WSU students</strong> in both physical and mental well-being.</p>
     </div>
     <div class="content">
-      <h2>Get Started</h2>
-      <p>If you would like to make an appointment:</p>
+      <img src="service.png" width="200px">
+      <h2 style="font-style:italic">A Quick Introduction</h2>
+      <p style="font-style:italic"> Since 2016, our website was created by our staff and team members to 
+        provide essential services for students who need support.</p><p style="font-style:italic">We are happy and always welcome to receive 
+        any requests for help from the next generation of Australian leaders. </p>
+    </div>
+    <img src="student.png" width="200px">
+    <div class="content">
+      <h2 style="font-style:italic">Get Started</h2>
+      <p style="font-style:italic">If you would like to make an appointment:</p>
       <ul>
         <li>
-          <span>Already a member? Sign in here.</span>
-           <a href="signin.php" class="button">Sign In</a> 
+          <span style="font-style:italic">Already a member? Sign in here.</span>
+           <a style="font-weight: bold; color:purple; font-style:italic" href="signin.php" >Sign In</a> 
         </li>
         <li>
-          <span>New here? Register today.</span>
-           <a href="signup.php" class="button">Sign Up</a>
+          <span style="font-style:italic">New here? Join us! Register here.</span>
+           <a style="font-weight: bold; color:red; font-style:italic" href="signup.php" >Sign Up</a>
         </li>
       </ul>
     </div>

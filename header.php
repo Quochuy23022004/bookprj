@@ -1,7 +1,6 @@
 <?php
     $current_page = basename($_SERVER['PHP_SELF']);
 ?>
-<!-- Navigation -->
 <div class="menu">
 <nav class="navbar" style="display:flex">
     <div class="logo">WSUBook</div>

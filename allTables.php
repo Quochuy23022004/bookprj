@@ -1,7 +1,7 @@
 <?php
 /**
  * Allows one to view all tables and their data in a database
- */
+ **/
 require_once("conn.php");
 $sql = "SHOW TABLES";
 $tables = $dbConn->query($sql);
@@ -16,7 +16,6 @@ while($tableName = $tables->fetch_array()) {
     ));
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,9 +31,7 @@ while($tableName = $tables->fetch_array()) {
 			<thead>
 				<tr style="font-weight:bold">
 				<?php foreach($table['fields'] as $field): ?>
-
 					<td><?php echo $field->name;?></td>
-
 				<?php endforeach; ?>
 				</tr>
 			</thead>

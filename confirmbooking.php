@@ -1,25 +1,21 @@
 <?php
     session_start();
-
     if (!isset($_SESSION['username'])) {
       header("Location: signin.php"); 
-    } else if($_SESSION['usertype'] != 'staff') {
+    } 
+    else if($_SESSION['usertype'] != 'staff') {
       header("Location: makebooking.php");
     }
-
-
     $dbConn = new mysqli("localhost", "root", "", "WSUBook");
     if($dbConn->connect_error) {
         die("Failed to connect to database " . $dbConn->connect_error);
     }
-    
     $bookingID = isset($_GET['bookingID']) ? intval($_GET['bookingID']) : 0;
     $sql = "SELECT * FROM booking WHERE bookingId = ?";
     $stmt = $dbConn->prepare($sql);
     $stmt->bind_param("i", $bookingID);
     $stmt->execute();
     $result = $stmt->get_result();
-
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $bookingID = intval($_POST['bookingID']);
         $updateSql = "UPDATE booking SET status = 'Confirmed', staff_username = ? WHERE bookingId = ?";
@@ -27,7 +23,6 @@
         $stmt->bind_param("si", $_SESSION['username'], $bookingID);
         $stmt->execute();
         $stmt->close();
-
         header("Location: showbooking.php");
         exit();
     }
@@ -56,7 +51,6 @@
                     <th>Action</th>
                 </tr>
             </thead>
-
             <tbody>
             <?php 
                 if ($result && $result->num_rows > 0) {
@@ -74,12 +68,14 @@
                                             <button type='submit' class='btn-confirm'>Confirm</button>
                                         </form>
                                       </td>";
-                            } else {
+                            } 
+                            else {
                                 echo "<td><span style='color: green; font-weight: bold;'>Already Confirmed</span></td>";
                             }
                         echo "</tr>";
                     }
-                } else {
+                }
+                 else {
                     echo "<tr><td colspan='6'>No pending bookings found</td></tr>";
                 }
                 ?>
